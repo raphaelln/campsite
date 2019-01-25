@@ -1,0 +1,9 @@
+spring:
+  redis:
+    host: localhost
+    port: 6380
+campsite:
+  booking:
+    max-stay: 3
+    day-limit-reservation: 1
+    month-limit-reservation: 1

@@ -1,0 +1,21 @@
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?useSSL=false&allowPublicKeyRetrieval=true
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    initialize: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+campsite:
+  booking:
+    max-stay: 3
+    day-limit-reservation: 1
+    month-limit-reservation: 1

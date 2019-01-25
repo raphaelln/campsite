@@ -1,0 +1,43 @@
+version: '2'
+services:
+  app:
+    build: .
+    container_name: campsite-app
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+      - mysql
+    expose:
+      - "8080"
+    networks:
+      - campsite-net
+    environment:
+    - DATABASE_NAME=campsite
+    - DATABASE_HOST=mysql
+    - DATABASE_PORT=3306
+    - DATABASE_USER=campsite
+    - DATABASE_PASSWORD=campsite
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379
+    - "SPRING_PROFILES_ACTIVE=dev"
+  mysql:
+    image: mysql
+    container_name: campsite-mysql
+    environment:
+      MYSQL_DATABASE: campsite
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: campsite
+      MYSQL_PASSWORD: campsite
+    networks:
+      - campsite-net
+  redis:
+    image: redis
+    container_name: campsite-redis
+    ports:
+      - 6379:6379
+    networks:
+      - campsite-net
+networks:
+  campsite-net:
+    driver: bridge
