@@ -43,7 +43,7 @@ In order to handle large volume of requests for getting the avaliability of the 
 
 The cache has default expiration date as 1 day, in order to discard old reservation dates.
 
-## Treat Concurrent Requests
+## Handle Concurrent Requests
 
 A integration test as written to validate concurrent request of booking operation.
 
